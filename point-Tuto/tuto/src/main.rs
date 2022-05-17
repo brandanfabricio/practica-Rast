@@ -1,3 +1,4 @@
+use std::collections::{HashMap,HashSet};
 
 use movies::play;
 use Pelicula::english::comedy::reproducir;
@@ -77,13 +78,76 @@ destruturacion(x);
         reproducir("la momia".to_string());
  Pelicula::english::comedy::reproducir("batman".to_string());
 
+            //vectores
+    let mut vec = Vec::new();
+
+    vec.push(20);
+    vec.push(30);
+    vec.push(40);
+    vec.push(50);
+
+    println!("Tamaño del vector : {}",vec.len());
+    println!("{:?}",vec);
+
+    //HashMap
+    let mut stateCodes = HashMap::new();
+
+    stateCodes.insert("FB","fabricio");
+    stateCodes.insert("TB","tamara");
+
+    println!("{:?}",stateCodes);
+
+    match stateCodes.get(&"FB"){
+        Some(value)=>{
+            println!("Llave encontrada {}",value)
+        }
+        None =>{
+            println!("Llave No encontrada")
+        }
+    }
+
+    for (key,val) in stateCodes.iter(){
+        println!("Key: {} value: {} ",key,val)
+    };
+    stateCodes.remove(&"TB");
+    for (key,val) in stateCodes.iter(){
+        println!("Key: {} value: {} ",key,val)
+    };
+    
+
+    //HASHSET
+        println!("Hashset");
+    let mut names = HashSet::new();
+
+    names.insert("Fabricioooo");
+    names.insert("Tamaraaa");
+    names.insert("Negro");
+
+    println!("{:?}",names);
+    
+    for name in names.iter() {
+        println!("nombre : {}",name)
+    };
+
+    match names.get(&"Negro"){
+        Some(value)=>{
+            println!("Si se encuentra : {}",value);
+        }
+        None => {
+            println!("No se encuentra en el hashset");
+        }
+    }
+
 }   
 
-pub mod movies {
-    pub fn play(name:String){
-        println!("Play movie {}",name);
-    }
-}
+
+
+
+
+
+
+
+
 
 pub mod Pelicula {
     pub mod english {
@@ -94,6 +158,13 @@ pub mod Pelicula {
         }
     }
 }
+
+pub mod movies {
+    pub fn play(name:String){
+        println!("Play movie {}",name);
+    }
+}
+
 
 
 
